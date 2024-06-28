@@ -1,15 +1,19 @@
 package com.kornienko.quest.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
-@Getter
+@Data
 public class Root {
-    private final List<Question> questions;
-    private final List<Choice> choices;
-    private final List<Result> results;
+    private List<Question> questions;
+    private List<Answer> answers;
+    private List<Result> results;
+
+    public Answer getAnswerByQuestionId(int id) {
+        return answers.stream()
+                .filter(answer -> answer.getId() == id)
+                .findFirst()
+                .orElseThrow();
+    }
 }

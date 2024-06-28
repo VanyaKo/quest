@@ -2,11 +2,10 @@ package com.kornienko.quest.models;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class Question {
+public class Answer {
     private int id;
     private String title;
-    private List<Integer> answers;
+    private int question;
+    private int result;
 }

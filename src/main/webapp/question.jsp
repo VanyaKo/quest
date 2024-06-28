@@ -12,7 +12,7 @@
 </head>
 <body>
 <p>${question}</p>
-<form action="handler.php">
+<form>
     <p><input name="dzen" type="radio" value="nedzen">${answer_1}</p>
     <p><input name="dzen" type="radio" value="dzen">${answer_2}</p>
     <p><input type="submit" value="Ответить"></p>

@@ -1,13 +1,13 @@
 package com.kornienko.quest.models;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
-@Getter
+@Data
 public class Result {
-    public final int id;
-    public final String title;
-    public final boolean failed;
-    public final boolean success;
+    private int id;
+    private String title;
+    private boolean failed;
+    private boolean success;
 }
