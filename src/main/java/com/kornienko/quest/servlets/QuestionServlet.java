@@ -36,16 +36,16 @@ public class QuestionServlet extends HttpServlet {
             Client client = ((Client) req.getSession().getAttribute(Consts.CLIENT));
             client.increaseGameCounter();
             Question question = root.getQuestions().getFirst();
-
-            handleQuestion(req, resp, question);
+            
+            showQuestion(req, resp, question);
         } else {
             int answerId = Integer.parseInt(req.getParameter("answerId"));
             Answer answer = root.getAnswers().get(answerId);
 
-            if(hasId(answer.getQuestionId())) {
+            if(notDefaultId(answer.getQuestionId())) {
                 Question question = root.getQuestions().get(answer.getQuestionId());
-                handleQuestion(req, resp, question);
-            } else if(hasId(answer.getResultId())) {
+                showQuestion(req, resp, question);
+            } else if(notDefaultId(answer.getResultId())) {
                 Result result = root.getResults().get(answer.getResultId());
                 req.getSession().setAttribute(Consts.RESULT, result);
                 req.getRequestDispatcher("/result.jsp").forward(req, resp);
@@ -53,11 +53,11 @@ public class QuestionServlet extends HttpServlet {
         }
     }
 
-    private boolean hasId(int id) {
+    private boolean notDefaultId(int id) {
         return id != Consts.DEFAULT_ID;
     }
 
-    private void handleQuestion(HttpServletRequest req, HttpServletResponse resp, Question question) throws ServletException, IOException {
+    private void showQuestion(HttpServletRequest req, HttpServletResponse resp, Question question) throws ServletException, IOException {
         int firstAnswerID = question.getAnswers().get(0);
         int secondAnswerID = question.getAnswers().get(1);
         Answer firstAnswer = root.getAnswerByQuestionId(firstAnswerID);

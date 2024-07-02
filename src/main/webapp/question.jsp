@@ -2,7 +2,8 @@
 <jsp:useBean id="answer_1" scope="session" type="com.kornienko.quest.models.Answer"/>
 <jsp:useBean id="answer_2" scope="session" type="com.kornienko.quest.models.Answer"/>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<!DOCTYPE>
+<html lang="ru">
 <head>
     <title>Quest</title>
 </head>

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <title>Quest</title>
 </head>
@@ -15,9 +15,7 @@
     навигатор.<br>
     А как обращаться к вам?</p>
 <form>
-    <label>
-        <input type="text" name="username" placeholder="Введите имя"/>
-    </label>
+    <input type="text" name="username" placeholder="Введите имя"/>
     <button type="submit">Представиться</button>
 </form>
 <jsp:include page="statistics.jsp">

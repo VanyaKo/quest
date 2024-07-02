@@ -22,11 +22,13 @@ public class PrologueServlet extends HttpServlet {
             req.getRequestDispatcher(req.getContextPath() + "/question").forward(req, resp);
             return;
         }
-        String requestedSessionId = req.getLocalAddr();
+        putClientToSession(req);
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+    }
 
+    private void putClientToSession(HttpServletRequest req) {
+        String requestedSessionId = req.getLocalAddr();
         client.setId(requestedSessionId);
         req.getSession().setAttribute(Consts.CLIENT, client);
-
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
