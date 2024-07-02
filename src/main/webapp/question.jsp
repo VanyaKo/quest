@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Quest</title>
 </head>
 <body>
 <p>${question.getTitle()}</p>

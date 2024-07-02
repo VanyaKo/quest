@@ -3,15 +3,20 @@ package com.kornienko.quest.models;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Client {
-    @Getter
+import java.io.Serializable;
+
+@Getter
+public class Client implements Serializable {
     @Setter
     private String id;
-    @Getter
     @Setter
     private String username;
-    @Getter
-    private int gameCount = 0;
+    private int gameCount;
+
+    public Client() {
+        gameCount = 0;
+        username = "DEFAULT_USERNAME";
+    }
 
     public void increaseGameCounter() {
         gameCount++;
