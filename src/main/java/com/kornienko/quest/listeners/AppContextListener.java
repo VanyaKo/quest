@@ -22,4 +22,12 @@ public class AppContextListener implements ServletContextListener {
 
         ServletContextListener.super.contextInitialized(sce);
     }
+
+    /*
+    TODO:
+    - не отправлять разные jsp
+- починить html injection
+- сделать мапу <SessionID, State>
+- сделать общение между бэком и фронтом похожим на Project-front
+     */
 }

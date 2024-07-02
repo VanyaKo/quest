@@ -2,6 +2,7 @@ package com.kornienko.quest.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kornienko.quest.models.Root;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 
 import java.io.Serializable;
@@ -11,12 +12,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@RequiredArgsConstructor
 public class JsonService implements Serializable {
     private final ObjectMapper objectMapper;
-
-    public JsonService(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
 
     @SneakyThrows
     public Root readFromFile(String pathToJson) {
