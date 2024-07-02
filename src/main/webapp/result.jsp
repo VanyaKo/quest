@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.kornienko.quest.models.Result" %><%--
   Created by IntelliJ IDEA.
   User: cegth
   Date: 28.06.2024
@@ -8,9 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Result</title>
 </head>
 <body>
-
+<h1>
+    <%
+        if(((Result) request.getAttribute("result")).isFailed()) {
+            out.print("Поражение");
+        } else {
+            out.print("Победа");
+        }
+    %>
+</h1>
+<p>${result.getTitle()}</p>
+<form action="${pageContext.request.contextPath}/question">
+    <button>К началу</button>
+</form>
+<jsp:include page="statistics.jsp">
+    <jsp:param name="CLIENT" value="${CLIENT}" />
+</jsp:include>
 </body>
 </html>

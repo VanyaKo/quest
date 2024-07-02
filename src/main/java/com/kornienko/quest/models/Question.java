@@ -9,4 +9,8 @@ public class Question {
     private int id;
     private String title;
     private List<Integer> answers;
+
+    private Question() {
+        id = -1;
+    }
 }

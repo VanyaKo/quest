@@ -1,0 +1,9 @@
+.hidden:target {
+    display: unset;
+}
+
+#left-bottom {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}

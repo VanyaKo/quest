@@ -1,6 +1,7 @@
 package com.kornienko.quest.listeners;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kornienko.quest.models.Client;
 import com.kornienko.quest.models.Root;
 import com.kornienko.quest.services.QuestionService;
 import jakarta.servlet.ServletContext;
@@ -17,9 +18,11 @@ public class AppContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext servletContext = sce.getServletContext();
 
+        Client client = new Client();
         QuestionService questionService = new QuestionService(new ObjectMapper());
         Root root = questionService.readFromFile("root.json");
 
+        servletContext.setAttribute(Consts.CLIENT, client);
         servletContext.setAttribute(Consts.QUESTION_SERVICE, questionService);
         servletContext.setAttribute(Consts.ROOT, root);
 

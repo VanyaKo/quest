@@ -4,13 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kornienko.quest.models.Root;
 import lombok.SneakyThrows;
 
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class QuestionService {
+public class QuestionService implements Serializable {
     private final ObjectMapper objectMapper;
 
     public QuestionService(ObjectMapper objectMapper) {

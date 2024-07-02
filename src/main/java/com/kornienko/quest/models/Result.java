@@ -10,4 +10,8 @@ public class Result {
     private String title;
     private boolean failed;
     private boolean success;
+
+    private Result() {
+        id = -1;
+    }
 }

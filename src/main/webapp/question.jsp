@@ -1,21 +1,20 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cegth
-  Date: 28.06.2024
-  Time: 14:26
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="question" scope="request" type="com.kornienko.quest.models.Question"/>
+<jsp:useBean id="answer_1" scope="request" type="com.kornienko.quest.models.Answer"/>
+<jsp:useBean id="answer_2" scope="request" type="com.kornienko.quest.models.Answer"/>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<p>${question}</p>
-<form>
-    <p><input name="dzen" type="radio" value="nedzen">${answer_1}</p>
-    <p><input name="dzen" type="radio" value="dzen">${answer_2}</p>
+<p>${question.getTitle()}</p>
+<form action="${pageContext.request.contextPath}">
+    <p><input name="answerId" type="radio" value="${answer_1.getId()}">${answer_1.getTitle()}</p>
+    <p><input name="answerId" type="radio" value="${answer_2.getId()}">${answer_2.getTitle()}</p>
     <p><input type="submit" value="Ответить"></p>
 </form>
+<jsp:include page="statistics.jsp">
+    <jsp:param name="CLIENT" value="${CLIENT}" />
+</jsp:include>
 </body>
 </html>
