@@ -17,7 +17,7 @@ public class AppContextListener implements ServletContextListener {
         ServletContext servletContext = sce.getServletContext();
 
         JsonService jsonService = new JsonService(new ObjectMapper());
-        Root root = jsonService.readFromFile("root.json");
+        Root root = jsonService.readFromFile(Consts.PATH_TO_JSON);
         servletContext.setAttribute(Consts.ROOT, root);
 
         ServletContextListener.super.contextInitialized(sce);
