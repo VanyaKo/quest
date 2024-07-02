@@ -29,5 +29,6 @@ public class AppContextListener implements ServletContextListener {
 - починить html injection
 - сделать мапу <SessionID, State>
 - сделать общение между бэком и фронтом похожим на Project-front
+- сделать разные сессии с разных браузеров
      */
 }
