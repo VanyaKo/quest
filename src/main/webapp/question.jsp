@@ -7,14 +7,17 @@
     <title>Quest</title>
 </head>
 <body>
-<p>${question.getTitle()}</p>
+<h2>${question.getTitle()}</h2>
 <form action="${pageContext.request.contextPath}/question">
-    <p><input name="answerId" type="radio" value="${answer_1.getId()}">${answer_1.getTitle()}</p>
-    <p><input name="answerId" type="radio" value="${answer_2.getId()}">${answer_2.getTitle()}</p>
+    <p>
+        <input name="answerId" type="radio" value="${answer_1.getId()}">${answer_1.getTitle()}
+        <br>
+        <input name="answerId" type="radio" value="${answer_2.getId()}">${answer_2.getTitle()}
+    </p>
     <p><input type="submit" value="Ответить"></p>
 </form>
 <jsp:include page="statistics.jsp">
-    <jsp:param name="CLIENT" value="${CLIENT}" />
+    <jsp:param name="CLIENT" value="${CLIENT}"/>
 </jsp:include>
 </body>
 </html>

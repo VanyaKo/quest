@@ -11,19 +11,19 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class QuestionService implements Serializable {
+public class JsonService implements Serializable {
     private final ObjectMapper objectMapper;
 
-    public QuestionService(ObjectMapper objectMapper) {
+    public JsonService(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
     @SneakyThrows
     public Root readFromFile(String pathToJson) {
         Path path = Path.of(Objects.requireNonNull(
-                getClass()
-                        .getClassLoader()
-                        .getResource(pathToJson))
+                        getClass()
+                                .getClassLoader()
+                                .getResource(pathToJson))
                 .toURI()
         );
 

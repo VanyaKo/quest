@@ -12,14 +12,14 @@ import java.io.IOException;
 
 @WebServlet(name = "prologueServlet", value = "/")
 public class PrologueServlet extends HttpServlet {
-    private Client client = new Client();
+    private final Client client = new Client();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         if(username != null) {
             client.setUsername(username);
-            req.getRequestDispatcher("/question").forward(req, resp);
+            req.getRequestDispatcher(req.getContextPath() + "/question").forward(req, resp);
             return;
         }
         String requestedSessionId = req.getLocalAddr();

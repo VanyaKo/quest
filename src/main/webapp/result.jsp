@@ -9,14 +9,14 @@
     <title>Quest</title>
 </head>
 <body>
-<h1>
+<h2>
     <c:if test="${RESULT.isFailed()}">
         <c:out value="Поражение"></c:out>
     </c:if>
     <c:if test="${RESULT.isSuccess()}">
         <c:out value="Победа"></c:out>
     </c:if>
-</h1>
+</h2>
 <p>${RESULT.getTitle()}</p>
 <form action="${pageContext.request.contextPath}/question">
     <button>К началу</button>

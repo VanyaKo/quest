@@ -2,8 +2,6 @@ package com.kornienko.quest.models;
 
 import com.kornienko.quest.consts.Consts;
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
 

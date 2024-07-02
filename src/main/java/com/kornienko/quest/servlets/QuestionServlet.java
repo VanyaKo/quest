@@ -6,7 +6,6 @@ import com.kornienko.quest.models.Client;
 import com.kornienko.quest.models.Question;
 import com.kornienko.quest.models.Result;
 import com.kornienko.quest.models.Root;
-import com.kornienko.quest.services.QuestionService;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -22,14 +21,12 @@ import static java.util.Objects.isNull;
 
 @WebServlet(name = "questionServlet", value = "/question")
 public class QuestionServlet extends HttpServlet {
-    private QuestionService questionService;
     private Root root;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         ServletContext servletContext = config.getServletContext();
-        questionService = ((QuestionService) servletContext.getAttribute(Consts.QUESTION_SERVICE));
         root = ((Root) servletContext.getAttribute(Consts.ROOT));
     }
 
@@ -38,11 +35,10 @@ public class QuestionServlet extends HttpServlet {
         if(isNull(req.getParameter("answerId"))) {
             Client client = ((Client) req.getSession().getAttribute(Consts.CLIENT));
             client.increaseGameCounter();
-            Question question = root.getQuestions().get(0);
+            Question question = root.getQuestions().getFirst();
 
             handleQuestion(req, resp, question);
-        }
-        else {
+        } else {
             int answerId = Integer.parseInt(req.getParameter("answerId"));
             Answer answer = root.getAnswers().get(answerId);
 

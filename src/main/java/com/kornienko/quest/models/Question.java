@@ -3,7 +3,6 @@ package com.kornienko.quest.models;
 import com.kornienko.quest.consts.Consts;
 import lombok.Data;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 

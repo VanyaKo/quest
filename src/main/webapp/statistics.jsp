@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Statistics</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
 <div id="left-bottom">

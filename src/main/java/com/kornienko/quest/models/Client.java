@@ -21,8 +21,4 @@ public class Client implements Serializable {
     public void increaseGameCounter() {
         gameCount++;
     }
-
-    public void resetGameCounter() {
-        gameCount = 0;
-    }
 }
