@@ -15,7 +15,7 @@ public class Client implements Serializable {
 
     public Client() {
         gameCount = 0;
-        username = "DEFAULT_USERNAME";
+        username = "DEFAULT_USER";
     }
 
     public void increaseGameCounter() {

@@ -14,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -44,16 +45,20 @@ public class QuestionServlet extends HttpServlet {
         else {
             int answerId = Integer.parseInt(req.getParameter("answerId"));
             Answer answer = root.getAnswers().get(answerId);
-            if(answer.getQuestionId() != -1) {
+
+            if(hasId(answer.getQuestionId())) {
                 Question question = root.getQuestions().get(answer.getQuestionId());
                 handleQuestion(req, resp, question);
-            } else if(answer.getResultId() != -1) {
+            } else if(hasId(answer.getResultId())) {
                 Result result = root.getResults().get(answer.getResultId());
-                req.setAttribute("result", result);
-
+                req.getSession().setAttribute(Consts.RESULT, result);
                 req.getRequestDispatcher("/result.jsp").forward(req, resp);
             }
         }
+    }
+
+    private boolean hasId(int id) {
+        return id != Consts.DEFAULT_ID;
     }
 
     private void handleQuestion(HttpServletRequest req, HttpServletResponse resp, Question question) throws ServletException, IOException {
@@ -62,9 +67,10 @@ public class QuestionServlet extends HttpServlet {
         Answer firstAnswer = root.getAnswerByQuestionId(firstAnswerID);
         Answer secondAnswer = root.getAnswerByQuestionId(secondAnswerID);
 
-        req.setAttribute("question", question);
-        req.setAttribute("answer_1", firstAnswer);
-        req.setAttribute("answer_2", secondAnswer);
+        HttpSession session = req.getSession();
+        session.setAttribute("question", question);
+        session.setAttribute("answer_1", firstAnswer);
+        session.setAttribute("answer_2", secondAnswer);
 
         req.getRequestDispatcher("/question.jsp").forward(req, resp);
     }
